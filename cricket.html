@@ -12,16 +12,16 @@
     <br><br>
     Total Score of User : <span id="totalscoreuser">0</span><br><br>
     Total Score of Computer : <span id="totalscorecom">0</span><br><br>
-    Enter Number : <input type="number" name="num" id="num" min="0" max="6" onchange="hit()"><br><br>
+    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()">
 
-
+    <br><br>
     Computer Number : <span id="compnum">0</span>
 
     <script>
         var active = "none";
         var actionChosen = "none";
-        var currentBalls = 0;
-        var overs = 2;
+        var turnPlayer = 0;
+        var turnComp = 0;
 
         var totalScoreuser = 0;
         var totalScorecomp = 0;
@@ -37,6 +37,7 @@
             temp.style.backgroundColor = 'lightgreen';
             active = "bowling";
             actionChosen = "Bowling";
+            turnComp = -1;
         }
 
         function chooseBatting()
@@ -50,6 +51,7 @@
             temp.style.backgroundColor = 'lightgreen';
             active = "batting";
             actionChosen = "batting";
+            turnPlayer = -1;
         }
 
         function randomNum()
@@ -58,7 +60,17 @@
             rand = Math.floor(rand * 7);
             return rand;
         }
-    </script>
 
+        function hit()
+        {
+            if(actionChosen == "bowling")
+            {
+                var temp = document.getElementById("compnum");
+                temp.innerHTML = randomNum();
+            }
+        }
+        
+    </script>
+    
 </body>
 </html>
