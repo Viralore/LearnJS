@@ -10,13 +10,16 @@
     Choose Bowling/Batting <br><br>
     <button id="bowling" onclick="chooseBowling()">Bowling</button>
     <button id="batting" onclick="chooseBatting()">Batting</button>
+    <br>
+    <br>
+    <button onclick="startGame()">Start the Game</button>
     <br><br>
     Total Score of User : <span id="totalscoreuser">0</span><br><br>
     Total Score of Computer : <span id="totalscorecom">0</span><br><br>
-    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> <p id="timer"></p>
-
-    <br><br>
     Computer Number : <span id="compnum">0</span>
+    <br><br>
+    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> 
+    <p id="countdown"></p>
 
     <br><br>
     <h1 id = "result"></h1>
@@ -148,7 +151,27 @@
             }
         }
 
-        
+       var count = 10;
+       function startGame()
+       {
+            var mytimer = setInterval ( () => {
+                document.getElementById("countdown").innerHTML = "Guess : " + count;
+                if(count == 0)
+                {
+                    clearInterval(mytimer);
+                    count = 10;
+                }
+                count--;
+            },1000);
+       }
+
+       function timeout()
+       {
+            var res = document.getElementById("result");
+            if(totalScorecomp == totalScoreuser) res.innerHTML = "Game Draw!!!";
+            else if(totalScorecomp > totalScoreuser) res.innerHTML = "Computer Won !!!";
+            else res.innerHTML = "Player Won!!!";
+       }
         
     </script>
     
