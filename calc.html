@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    Number 1 : <input type="number" name="n1" id="n1">
+    <br>
+    <br>
+    Number 2 : <input type="number" name="n2" id="n2">
+    <br>
+    <br>
+    <!-- Answer : <input type="number" name="ans" id="ans">
+    <br>
+    <br> -->
+
+    <button id="add" onclick="calculate()">+</button>
+    <button id="sub" onclick="calculate()">-</button>
+
+
+    <script>
+        
+        function calculate()
+        {
+            var ele1 = document.getElementById("n1");
+            var ele2 = document.getElementById("n2");
+            var evt = event.target;
+            let temp = evt.getAttribute("id");
+            
+            if(temp == 'add')
+            {
+                ele1.value = Number(ele1.value) + Number(ele2.value);
+            }
+            else if(temp == 'sub')
+            {
+                ele1.value = Number(ele1.value) - Number(ele2.value);
+            }
+            ele2.value = 0;
+        }
+    </script>
+</body>
+</html>
+
+<!-- function add()
+{
+    var ele1 = document.getElementById("n1").value;
+    var ele2 = document.getElementById("n2").value;
+    //let val1 = ele1.value;
+    //let val2 = ele2.value;
+    var ele3 = document.getElementById("ans");
+
+    //ele3.value = parseFloat(val1) + parseFloat(val2);
+    ele3.value = Number(ele1) + Number(ele2);
+} -->
+<!-- 
+    for rounding off 
+    123.123.toFixed(2) rounding off to 2 decimal digits
+
+    Number("10 year") -> NaN(Not a number)
+    parseInt("10 year") -> 10
+    parseFloat("10 20 30") -> 10
+-->
