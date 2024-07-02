@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket</title>
+</head>
+<body>
+    Choose Bowling/Batting <br><br>
+    <button id="bowling" onclick="chooseBowling()">Bowling</button>
+    <button id="batting" onclick="chooseBatting()">Batting</button>
+    <br><br>
+    Total Score of User : <span id="totalscoreuser">0</span><br><br>
+    Total Score of Computer : <span id="totalscorecom">0</span><br><br>
+    Enter Number : <input type="number" name="num" id="num" min="0" max="6" onchange="hit()"><br><br>
+
+
+    Computer Number : <span id="compnum">0</span>
+
+    <script>
+        var active = "none";
+        var actionChosen = "none";
+        var currentBalls = 0;
+        var overs = 2;
+
+        var totalScoreuser = 0;
+        var totalScorecomp = 0;
+
+        function chooseBowling()
+        {
+            if(active == "batting")
+            {
+                var toggle = document.getElementById("batting");
+                toggle.style.backgroundColor = 'white';
+            }
+            var temp = document.getElementById("bowling");
+            temp.style.backgroundColor = 'lightgreen';
+            active = "bowling";
+            actionChosen = "Bowling";
+        }
+
+        function chooseBatting()
+        {
+            if(active == "bowling")
+            {
+                var toggle = document.getElementById("bowling");
+                toggle.style.backgroundColor = 'white';
+            }
+            var temp = document.getElementById("batting");
+            temp.style.backgroundColor = 'lightgreen';
+            active = "batting";
+            actionChosen = "batting";
+        }
+
+        function randomNum()
+        {
+            var rand = Math.random();
+            rand = Math.floor(rand * 7);
+            return rand;
+        }
+    </script>
+
+</body>
+</html>
