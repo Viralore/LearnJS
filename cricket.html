@@ -6,19 +6,21 @@
     <title>Cricket</title>
 </head>
 <body>
+    <h1>Cricket Game</h1>
     Choose Bowling/Batting <br><br>
     <button id="bowling" onclick="chooseBowling()">Bowling</button>
     <button id="batting" onclick="chooseBatting()">Batting</button>
     <br><br>
     Total Score of User : <span id="totalscoreuser">0</span><br><br>
     Total Score of Computer : <span id="totalscorecom">0</span><br><br>
-    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()">
+    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> <p id="timer"></p>
 
     <br><br>
     Computer Number : <span id="compnum">0</span>
 
     <br><br>
     <h1 id = "result"></h1>
+    <h1 id = "check"></h1>
 
     <script>
         var active = "none";
@@ -30,6 +32,8 @@
 
         var totalScoreuser = 0;
         var totalScorecomp = 0;
+
+        var check = 0;
 
         function chooseBowling()
         {
@@ -44,6 +48,7 @@
             actionChosen = "Bowling";
             turnComp = -1;
             currentTurn = "Computer";
+            check = 1;
         }
 
         function chooseBatting()
@@ -59,6 +64,7 @@
             actionChosen = "Batting";
             turnPlayer = -1;
             currentTurn = "Player";
+            check = 1;
         }
 
         function randomNum()
@@ -70,10 +76,15 @@
 
         function hit()
         {
-            if(actionChosen == "none") 
+            if(check == 0) 
             {
-                var res = document.getElementById("result");
+                var res = document.getElementById("check");
                 res.innerHTML = "Please Choose Batting or Bowling first...";
+            }
+            else
+            {
+                var res = document.getElementById("check");
+                res.innerHTML = "";
             }
             if(turnComp == -1 && turnPlayer == -1)
             {
@@ -93,6 +104,12 @@
                     {
                         var compTot = document.getElementById("totalscorecom");
                         compTot.innerHTML = totalScorecomp;
+                        actionChosen = "Batting";
+                        turnComp = -1;
+                        var temp = document.getElementById("bowling");
+                        var temp2 = document.getElementById("batting");
+                        temp.style.backgroundColor = 'white';
+                        temp2.style.backgroundColor = 'lightgreen';
                     }
                     else
                     {
@@ -108,10 +125,16 @@
                     var compGuess = randomNum();
                     var playerGuess = document.getElementById("num");
                     var playerGuessNum = playerGuess.value;
-                    if(compGuess == Number(playerGuessNum))
+                    if(Number(playerGuessNum) == compGuess)
                     {
                         var playerTot = document.getElementById("totalscoreuser");
                         playerTot.innerHTML = totalScoreuser;
+                        actionChosen = "Bowling";
+                        turnPlayer = -1;
+                        var temp = document.getElementById("bowling");
+                        var temp2 = document.getElementById("batting");
+                        temp.style.backgroundColor = 'lightgreen';
+                        temp2.style.backgroundColor = 'white';
                     }
                     else
                     {
@@ -124,6 +147,8 @@
                 }
             }
         }
+
+        
         
     </script>
     
