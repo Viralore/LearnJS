@@ -17,11 +17,16 @@
     <br><br>
     Computer Number : <span id="compnum">0</span>
 
+    <br><br>
+    <h1 id = "result"></h1>
+
     <script>
         var active = "none";
         var actionChosen = "none";
         var turnPlayer = 0;
         var turnComp = 0;
+
+        var currentTurn = "none";
 
         var totalScoreuser = 0;
         var totalScorecomp = 0;
@@ -38,6 +43,7 @@
             active = "bowling";
             actionChosen = "Bowling";
             turnComp = -1;
+            currentTurn = "Computer";
         }
 
         function chooseBatting()
@@ -50,8 +56,9 @@
             var temp = document.getElementById("batting");
             temp.style.backgroundColor = 'lightgreen';
             active = "batting";
-            actionChosen = "batting";
+            actionChosen = "Batting";
             turnPlayer = -1;
+            currentTurn = "Player";
         }
 
         function randomNum()
@@ -63,10 +70,58 @@
 
         function hit()
         {
-            if(actionChosen == "bowling")
+            if(actionChosen == "none") 
             {
-                var temp = document.getElementById("compnum");
-                temp.innerHTML = randomNum();
+                var res = document.getElementById("result");
+                res.innerHTML = "Please Choose Batting or Bowling first...";
+            }
+            if(turnComp == -1 && turnPlayer == -1)
+            {
+                var res = document.getElementById("result");
+                if(totalScorecomp == totalScoreuser) res.innerHTML = "Game Draw!!!";
+                else if(totalScorecomp > totalScoreuser) res.innerHTML = "Computer Won !!!";
+                else res.innerHTML = "Player Won!!!";
+            }
+            else
+            {
+                if(actionChosen == "Bowling")
+                {
+                    var compGuess = randomNum();
+                    var playerGuess = document.getElementById("num").value;
+
+                    if(compGuess == playerGuess)
+                    {
+                        var compTot = document.getElementById("totalscorecom");
+                        compTot.innerHTML = totalScorecomp;
+                    }
+                    else
+                    {
+                        totalScorecomp += compGuess;
+                        var comp = document.getElementById("compnum");
+                        var compTot = document.getElementById("totalscorecom");
+                        compTot.innerHTML = totalScorecomp;
+                        comp.innerHTML = compGuess;
+                    }
+                }
+                else if(actionChosen == "Batting")
+                {
+                    var compGuess = randomNum();
+                    var playerGuess = document.getElementById("num");
+                    var playerGuessNum = playerGuess.value;
+                    if(compGuess == Number(playerGuessNum))
+                    {
+                        var playerTot = document.getElementById("totalscoreuser");
+                        playerTot.innerHTML = totalScoreuser;
+                    }
+                    else
+                    {
+                        totalScoreuser += Number(playerGuessNum);
+                        var playerTot = document.getElementById("totalscoreuser");
+                        playerTot.innerHTML = totalScoreuser;
+                        var comp = document.getElementById("compnum");
+                        comp.innerHTML = compGuess;
+                    }
+                }
             }
         }
         
