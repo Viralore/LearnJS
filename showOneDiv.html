@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show One Div</title>
+</head>
+<body>
+
+    <button onclick="hide(this)">Hide All</button>
+    <button onclick="p1(this)">P1</button>
+    <button onclick="p2(this)">P2</button>
+    <button onclick="p3(this)">P3</button>
+    <button onclick="p4(this)">P4</button>
+    <button onclick="p5(this)">P5</button>
+    <br>
+
+    <div id="main">
+        <p id="p-1" style="background-color: lightblue;">1</p>
+        <p id="p-2" style="background-color: lightgreen;">2</p>
+        <p id="p-3" style="background-color: lightpink;">3</p>
+        <p id="p-4" style="background-color: lightyellow;">4</p>
+        <p id="p-5" style="background-color: lightcoral;">5</p>
+    </div>
+
+    <script>
+        var toggleALL = "hide"
+        function hide(btn)
+        {
+            var el = document.getElementById("main");
+            if(toggleALL == "hide")
+            {
+                toggleALL = "show";
+                btn.innerHTML = "Show All"
+                el.style.visibility  = "hidden";
+            }
+            else
+            {
+                toggleAll = "hide";
+                btn.innerHTML = "Hide All"
+                el.style.visibility = "visible";
+            }
+        }
+
+        var toggleP1 = "hide";
+        function p1(btn)
+        {
+            var x = document.getElementById("p-1");
+            const z = document.getElementById("main").children;
+            if(toggleP1 == "hide")
+            {
+                btn.innerHTML = "P1";
+                toggleALL = "hide";
+                toggleP1 = "show";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "hidden";
+                }
+            }
+            else
+            {
+                toggleP1 = "hide";
+                toggleAll = "show";
+                btn.innerHTML = "P1`";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "visible";
+                }
+                
+            }
+            x.style.visibility = "visible";
+        }
+
+        var toggleP2 = "hide";
+        function p2(btn)
+        {
+            var x = document.getElementById("p-2");
+            const z = document.getElementById("main").children;
+            if(toggleP2 == "hide")
+            {
+                btn.innerHTML = "P2";
+                toggleALL = "hide";
+                toggleP2 = "show";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "hidden";
+                }
+            }
+            else
+            {
+                toggleP2 = "hide";
+                toggleAll = "show";
+                btn.innerHTML = "P2`";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "visible";
+                }
+                
+            }
+            x.style.visibility = "visible";
+        }
+
+        var toggleP3 = "hide";
+        function p3(btn)
+        {
+            var x = document.getElementById("p-3");
+            const z = document.getElementById("main").children;
+            if(toggleP3 == "hide")
+            {
+                btn.innerHTML = "P3";
+                toggleALL = "hide";
+                toggleP3 = "show";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "hidden";
+                }
+            }
+            else
+            {
+                toggleP3 = "hide";
+                toggleAll = "show";
+                btn.innerHTML = "P3`";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "visible";
+                }
+                
+            }
+            x.style.visibility = "visible";
+        }
+
+        var toggleP4 = "hide";
+        function p4(btn)
+        {
+            var x = document.getElementById("p-4");
+            const z = document.getElementById("main").children;
+            if(toggleP4 == "hide")
+            {
+                btn.innerHTML = "P4";
+                toggleALL = "hide";
+                toggleP4 = "show";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "hidden";
+                }
+            }
+            else
+            {
+                toggleP4 = "hide";
+                toggleAll = "show";
+                btn.innerHTML = "P5`";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "visible";
+                }
+                
+            }
+            x.style.visibility = "visible";
+        }
+
+        var toggleP5 = "hide";
+        function p5(btn)
+        {
+            var x = document.getElementById("p-5");
+            const z = document.getElementById("main").children;
+            if(toggleP5 == "hide")
+            {
+                btn.innerHTML = "P5";
+                toggleALL = "hide";
+                toggleP5 = "show";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "hidden";
+                }
+            }
+            else
+            {
+                toggleP5 = "hide";
+                toggleAll = "show";
+                btn.innerHTML = "P5`";
+                for(var i=0;i<z.length;i++)
+                {
+                    z[i].style.visibility = "visible";
+                }
+                
+            }
+            x.style.visibility = "visible";
+        }
+
+    </script>
+
+</body>
+</html>

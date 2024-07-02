@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Fruits</h2>
+    <select name="fruit" id="fruit" onchange="showFruit()">
+    </select>
+    <br>
+    <br>
+
+    <img id="image" src="apple.jpg" height="500px" width="500px">
+
+    <script>
+        var fruits = ["apple","mango","banana","orange"];
+        var pics = ["apple.jpg","mango.jpg","banana.jpg","orange.jpg"];
+
+        var el = document.getElementById("fruit");
+        var val = "";
+
+        for(let i=0;i<fruits.length;i++)
+        {
+            val += '<option value="'+pics[i] + '">' + fruits[i] + '</option>';
+        }
+        el.innerHTML = val;
+
+        function showFruit()
+        {
+            var ele = document.getElementById("fruit").options[document.getElementById("fruit").selectedIndex].value;
+            var fruitImage = document.getElementById("image");
+            fruitImage.src = ele;
+        }
+
+    </script>
+
+</body>
+</html>

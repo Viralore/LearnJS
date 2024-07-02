@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb</title>
+</head>
+<body>
+    <h2 id="b">JavaScript to change attributes</h2>
+    <!--
+    <img id="bulb" src="off_bulb.jpg" alt="of bulb">
+    <br>
+    <button onclick="showBulbON">ON</button>
+    <button onclick="showBulbOFF">OFF</button>
+
+    <script>
+        function showBulbON()
+        {
+            let el = document.getElementById("bulb");
+            el.src = "on_bulb.jpg";
+        }
+
+        function showBulbOFF()
+        {
+            let el = document.getElementById("bulb");
+            el.src = "off_bulb.jpg";
+        }
+
+    </script>
+    <br>
+    <br>
+    -->
+    <!--
+    <img id="a" src="black.png" alt="black">
+    <br>
+    <button id="b" onclick="btn()">white</button>
+
+    <script>
+        var temp = 0;
+        function btn()
+        {
+            let x = document.getElementById("a");
+            let y = document.getElementById("b");
+            if(temp%2==0)
+            {
+                y.innerHTML = "black";
+                x.src = "white.png";
+
+            }
+            else
+            {
+                y.innerHTML = "white";
+                x.src = "black.png";
+            }
+            temp++;
+        }
+    </script>
+    -->
+    <button id="a" onclick="change()">Black</button>
+
+    <script>
+        var temp = 0;
+        function change()
+        {
+            let x = document.getElementById("b");
+            let y = document.getElementById("a");
+            if(temp%2==0)
+            {
+                y.innerHTML = "Black";
+                document.body.style.backgroundColor='white';
+                x.style.color='black';
+            }
+            else
+            {
+                y.innerHTML = "White";
+                document.body.style.backgroundColor='black';
+                x.style.color='white';
+            }
+            temp++;
+        }
+    </script>
+
+    <button id="a" onclick="change()">Black</button>
+</body>
+</html>

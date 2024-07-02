@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elements</title>
+</head>
+<body>
+    <div id="heading">
+        JavaScript
+    </div>
+    <div id="content">
+        <ol>
+            <li>JS is client side language</li>
+            <li>It runs in the browsers </li>
+        </ol>
+        <button onclick="addToJS()">Show More</button>
+    </div>
+
+    <script>
+        var headingE1 = document.getElementById("heading");
+        headingE1.innerHTML = headingE1.innerHTML + "!!!";
+
+        var array = [ "It can change html without server intervention ", "can change style", "can change attributes",
+                         "can change data sent to server", "can change date from server", "can show or hide elements"]
+        var currentIndex = 0;
+        function addToJS()
+        {
+            if(currentIndex > array.length-1)
+            {
+                window.alert("No more elements");
+            }
+            else 
+            {
+                let arEls = document.getElementsByTagName("ol");
+                arEls[0].innerHTML += "<li>"+array[currentIndex++]+"</li>";
+            }
+        }
+    </script>
+</body>
+</html>
