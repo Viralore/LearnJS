@@ -19,8 +19,8 @@
     Computer Number : <span id="compnum">0</span>
     <br><br>
     Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> 
-    <p id="countdown"></p>
-
+    <span id="countdown"></span>
+    <br><br>
     <button onclick="reloadPage()">Reset</button>
 
     <br><br>
@@ -115,13 +115,15 @@
                         var temp2 = document.getElementById("batting");
                         temp.style.backgroundColor = 'white';
                         temp2.style.backgroundColor = 'lightgreen';
+                        var comp = document.getElementById("compnum");
+                        comp.innerHTML = compGuess;
                     }
                     else
                     {
                         totalScorecomp += compGuess;
-                        var comp = document.getElementById("compnum");
                         var compTot = document.getElementById("totalscorecom");
                         compTot.innerHTML = totalScorecomp;
+                        var comp = document.getElementById("compnum");
                         comp.innerHTML = compGuess;
                     }
                 }
@@ -140,6 +142,8 @@
                         var temp2 = document.getElementById("batting");
                         temp.style.backgroundColor = 'lightgreen';
                         temp2.style.backgroundColor = 'white';
+                        var comp = document.getElementById("compnum");
+                        comp.innerHTML = compGuess;
                     }
                     else
                     {
@@ -151,8 +155,6 @@
                     }
                 }
             }
-            var checking = document.getElementById("countdown");
-            console.log(checking.value);
         }
 
        var count = 10;
