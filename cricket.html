@@ -21,6 +21,8 @@
     Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> 
     <p id="countdown"></p>
 
+    <button onclick="reloadPage()">Reset</button>
+
     <br><br>
     <h1 id = "result"></h1>
     <h1 id = "check"></h1>
@@ -149,13 +151,15 @@
                     }
                 }
             }
+            var checking = document.getElementById("countdown");
+            console.log(checking.value);
         }
 
        var count = 10;
        function startGame()
        {
             var mytimer = setInterval ( () => {
-                document.getElementById("countdown").innerHTML = "Guess : " + count;
+                document.getElementById("countdown").innerHTML = "Time left : " + count;
                 if(count == 0)
                 {
                     clearInterval(mytimer);
@@ -171,6 +175,11 @@
             if(totalScorecomp == totalScoreuser) res.innerHTML = "Game Draw!!!";
             else if(totalScorecomp > totalScoreuser) res.innerHTML = "Computer Won !!!";
             else res.innerHTML = "Player Won!!!";
+       }
+
+       function reloadPage()
+       {
+            location.reload();
        }
         
     </script>
