@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Demo</title>
+</head>
+<body>
+    <h1>See the console</h1> 
+    <!-- Pan number 5 letters 4 digits 1 letter case insensitive -->
+    Enter your PAN Number : <input type="text" name="pan" id="pan" onkeyup="testPan()">
+    <!-- background of input should be red if pan is invalid else background is invalid else background must be green -->
+    <script>
+        var patt = /java/i
+        var patt1 = /aa+/i
+        var str = "in computers, java mmad javascript are languages";
+
+        var n = str.search(patt);
+        console.log(n);
+
+        var testResult = patt1.test(str);
+        console.log(testResult);
+
+        var adhaar = "123412341234";
+        //var pattAdhaar = /^[0-9]{12}$/
+        var pattAdhaar = /^[2-9][0-9]{11}$/
+        testResult = pattAdhaar.test(adhaar);
+        console.log("Adhaar valid : " + testResult);
+
+        var pattCaps = /[A-Z]/
+        var pattSmall = /[a-z]/
+        var pattDigits = /\d/
+        var pattSpecials = /[@|#|$|%]/
+
+        var pass = "mypass@1"
+
+        if(pattCaps.test(pass)) console.log("contains capital");
+        else console.log("NO capital");
+
+        function testPan()
+        {
+            var ele = document.getElementById("pan");
+            var val = ele.value;
+            var pattern = /^[a-z]{5}[0-9]{4}[a-z]$/i
+            if(pattern.test(val))
+            {
+                ele.style.backgroundColor= 'lightgreen';
+            }
+            else
+            {
+                ele.style.backgroundColor = 'red';
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select City</title>
+</head>
+<body>
+    <h1>Select state and city</h1>
+    <form action="#">
+        State : <select name="state" id="state" onchange='populateSelect("city",data[document.getElementById("state").options[document.getElementById("state").selectedIndex].value])'>
+
+        </select><br><br>
+
+        City : <select name="city" id="city">
+
+        </select>
+
+
+        <script>
+
+            var states = ["Rajasthan","Haryana","Punjab"];
+            var cities = [["Chirawa","Pilani","Jodhpur City"],["Ambala","Panchkula","Gurugram"],["Amritsar","Jalandhar","Phagwara"]];
+
+            var data ={
+                none : ["none"],
+                Rajasthan : ["none","Chirawa","Pilani","Jodhpur City"],
+                Haryana : ["none","Ambala","Panchkula","Gurugram"],
+                Punjab : ["none","Amritsar","Jalandhar","Phagwara"]
+            };
+
+            function populateSelect(id, values)
+            {
+                var el = document.getElementById(id);
+                //var str = '<option value="none">none</option>';
+                var str = "";
+
+                for(v of values)
+                {
+                    str += '<option value="'+v + '">' + v + '</option>';
+                }
+                el.innerHTML = str;
+            }
+            populateSelect("state",Object.keys(data));
+
+            function doPopulateSelect()
+            {
+                var ele = document.getElementById("state").options[document.getElementById("state").selectedIndex].value;
+                if(ele != "none") populateSelect("city",data[ele]);
+            }
+            
+        </script>
+
+    </form>
+</body>
+</html>
