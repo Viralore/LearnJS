@@ -10,9 +10,9 @@
     Choose Bowling/Batting <br><br>
     <button id="bowling" onclick="chooseBowling()">Bowling</button>
     <button id="batting" onclick="chooseBatting()">Batting</button>
+    <!-- <br>
     <br>
-    <br>
-    <button onclick="startGame()">Start the Game</button>
+    <button onclick="startGame()">Start the Game</button> -->
     <br><br>
     Total Score of User : <span id="totalscoreuser">0</span><br><br>
     Total Score of Computer : <span id="totalscorecom">0</span><br><br>
@@ -93,10 +93,7 @@
             }
             if(turnComp == -1 && turnPlayer == -1)
             {
-                var res = document.getElementById("result");
-                if(totalScorecomp == totalScoreuser) res.innerHTML = "Game Draw!!!";
-                else if(totalScorecomp > totalScoreuser) res.innerHTML = "Computer Won !!!";
-                else res.innerHTML = "Player Won!!!";
+                return;
             }
             else
             {
@@ -126,6 +123,15 @@
                         var comp = document.getElementById("compnum");
                         comp.innerHTML = compGuess;
                     }
+
+                    if(turnComp == -1 && turnPlayer == -1)
+                    {
+                        var res = document.getElementById("result");
+                        let diff = totalScorecomp-totalScoreuser;
+                        if(diff==0) res.innerHTML = "Game Draw!!!";
+                        else if(diff>0) res.innerHTML = "Computer Won by " + diff + " runs !!!";
+                        else res.innerHTML = "Player Won by " + (diff*(-1)) + " runs !!!";
+                    }
                 }
                 else if(actionChosen == "Batting")
                 {
@@ -152,6 +158,14 @@
                         playerTot.innerHTML = totalScoreuser;
                         var comp = document.getElementById("compnum");
                         comp.innerHTML = compGuess;
+                    }
+                    if(turnComp == -1 && turnPlayer == -1)
+                    {
+                        var res = document.getElementById("result");
+                        let diff = totalScorecomp-totalScoreuser;
+                        if(diff==0) res.innerHTML = "Game Draw!!!";
+                        else if(diff>0) res.innerHTML = "Computer Won by " + diff + " runs !!!";
+                        else res.innerHTML = "Player Won by " + (diff*(-1)) + " runs !!!n";
                     }
                 }
             }
