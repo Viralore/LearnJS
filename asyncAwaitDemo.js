@@ -55,7 +55,28 @@ async function sum(a,b)
     return a+b;
 }
 
-function testSum()
+//behind the scene converting a function to async function
+function sum1(a,b)
+{
+    var prm = new Promise(function(resolve,reject)
+    {
+        try
+        {
+            //do the processing that takes time 
+            //when processing is done, call resolve(result)
+            let c = a+b;
+            resolve(c);
+        }
+        catch(err)
+        {
+            //call reject(err)
+            reject(err);
+        }
+    });
+    return prm;
+}
+
+async function testSum()
 {
     let x = sum(3,4);
     console.log(x);
@@ -64,5 +85,11 @@ function testSum()
     {
         console.log(result);
     });
+
+    let result = await sum(3,4);
+    console.log(result);
+
+    var prm1 = sum1(3,4);
+    prm1.then(obj => console.log(obj));
 }
 testSum();
