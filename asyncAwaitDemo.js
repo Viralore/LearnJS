@@ -64,8 +64,13 @@ function sum1(a,b)
         {
             //do the processing that takes time 
             //when processing is done, call resolve(result)
-            let c = a+b;
-            resolve(c);
+            // let c = a+b;
+            // resolve(c);
+
+            setTimeout(()=> {
+                let c = a+b;
+                resolve(c);
+            },3000);
         }
         catch(err)
         {
@@ -89,6 +94,10 @@ async function testSum()
     let result = await sum(3,4);
     console.log(result);
 
+    let timer = setInterval(()=>{
+        console.log(prm.state);
+    },500);
+    setTimeout(()=> {clearInterval(timer)},5000);
     var prm1 = sum1(3,4);
     prm1.then(obj => console.log(obj));
 }
