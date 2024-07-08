@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="data">Data in console</div><br>
+
+    <button type="button" id="btn" onclick="getData()" title="Button">Get Data</button>
+
+    <script>
+        function getData()
+        {
+            fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => {console.log(json)
+                var el = document.getElementById("data")
+                el.innerHTML = JSON.stringify(json)}
+            )
+        }
+    </script>
+
+    <br><br>
+    <label for="todoid">Enter ID of ToDo : </label><input type="text" name = "todoid" id="todoid"> <button type="button" onclick="getData2()">Get Data</button>
+    <p id="ptag"></p>
+
+    <script>
+        function getData2()
+        {
+            var val = document.getElementById("todoid").value;
+            var query = 'https://jsonplaceholder.typicode.com/todos/'+val;
+
+            fetch(query)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                var el = document.getElementById("ptag");
+                el.innerHTML = JSON.stringify(json);
+            })
+        }
+    </script>
+</body>
+</html>
