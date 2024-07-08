@@ -26,18 +26,20 @@
     Choose HEAD or TAIL<br>
     <br>
     <div class="tossing">
-        <button class="toss-btn" id="head" onclick="heads()">Head</button> 
+        <button type="button" class="toss-btn" id="head" onclick="heads()">Head</button> 
         <span>OR</span>
-        <button class="toss-btn" id="tail" onclick="tails()">Tail</button>
+        <button type="button" class="toss-btn" id="tail" onclick="tails()">Tail</button>
         <span id="toss-winner"></span>
     </div>
     <br>
     <button class="toss-btn" id="toss-btn" onclick="tossFun()">Toss</button>
     <br>
     <span id="choosing"></span>
-
+    <br>
     <div id="won">
-
+        Choose Bowling/Batting <br><br>
+        <button type="button" id="bowling" onclick="chooseBowling()">Bowling</button>
+        <button type="button" id="batting" onclick="chooseBatting()">Batting</button><br><br>
     </div>
 
     <!-- <div id="won">
@@ -55,7 +57,7 @@
     Total Score of Computer : <span id="totalscorecom">0</span><br><br>
     Computer Number : <span id="compnum">0</span>
     <br><br>
-    Enter Number : <input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> 
+    <label for="num">Enter Number : </label><input type="number" name="num" id="num" min="0" max="6"> <input type="button" value="Guess" onclick="hit()"> 
     <span id="countdown"></span>
     <br><br>
     <button onclick="reloadPage()">Reset</button>
@@ -150,57 +152,42 @@
             var di = document.getElementById("won");
             if(arg == "Player")
             {
-                var p1 = document.createElement("p");
-                p1.innerHTML = "Choose Bowling/Batting";
-                di.append(p1);
-                //<button id="bowling" onclick="chooseBowling()">Bowling</button>
-                //<button id="batting" onclick="chooseBatting()">Batting</button>
-                var b1 = document.createElement("button");
-                var b2 = document.createElement("button");
-                b1.innerHTML = "Bowling";
-                b2.innerHTML = "Batting";
-                b1.id = "bowling";
-                b2.id = "batting";
-                b1.style.fontWeight = "500";
-                b1.style.fontSize = "medium";
-                b2.style.fontWeight = "500";
-                b2.style.fontSize = "medium";
-
-                b1.onclick = "chooseBowling()";
-                b2.onclick = "chooseBatting()";
-                di.append(b1);
-                var span1 = document.createElement("span");
-                span1.innerHTML = "OR";
-                di.append(span1);
-                di.append(b2);
-
+                
             }
             else
             {
-                var p1 = document.createElement("p");
+                var b1 = document.getElementById("bowling");
+                var b2 = document.getElementById("batting");
+                b1.disabled = "true";
+                b2.disabled = "true";
+                var h3 = document.createElement("h3");
                 var temp = randomNum(2);
                 if(temp = 0)
                 {
-                    p1.innerHTML = "Computer choose Bowling first..";
-                    di.append(p1);
+                    chooseBatting();
+                    h3.innerHTML = "Computer choose Bowling first..";
+                    di.append(h3);
                 }
                 else
                 {
-                    p1.innerHTML = "Computer choose Batting first..";
-                    di.append(p1);
+                    chooseBowling();
+                    h3.innerHTML = "Computer choose Batting first..";
+                    di.append(h3);
                 }
             }
         }
 
         function chooseBowling()
         {
+            var toggle = document.getElementById("batting");
             if(active == "batting")
             {
-                var toggle = document.getElementById("batting");
                 toggle.style.backgroundColor = 'white';
             }
             var temp = document.getElementById("bowling");
             temp.style.backgroundColor = 'lightgreen';
+            temp.disabled = "true";
+            toggle.disabled = "true";
             active = "bowling";
             actionChosen = "Bowling";
             turnComp = -1;
@@ -209,14 +196,16 @@
 
         function chooseBatting()
         {
+            var toggle = document.getElementById("bowling");
             if(active == "bowling")
             {
-                var toggle = document.getElementById("bowling");
                 toggle.style.backgroundColor = 'white';
             }
             var temp = document.getElementById("batting");
             temp.style.backgroundColor = 'lightgreen';
             active = "batting";
+            temp.disabled = "true";
+            toggle.disabled = "true";
             actionChosen = "Batting";
             turnPlayer = -1;
             check = 1;
