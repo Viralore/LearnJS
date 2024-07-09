@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demo</title>
+</head>
+
+<body>
+    <h1>DOM</h1>
+
+    <button type="button" onclick="addDiv()">Add</button>
+    <div class="firstdiv-bordered">
+        <div id="top" class="top">
+            This ia top div
+            <div id="header">Hearer Div</div>
+            <div id="explanation">Inner div explanation</div>
+        </div>
+    </div>
+
+    <button type="button" onclick="duplicate()">Duplicate</button>
+
+    <script>
+        var divEl = document.getElementById("top");
+        console.log(divEl);
+        console.log("No. of children " + divEl.childElementCount);
+        console.log("No. of children " + divEl.children.length);
+
+        function addDiv()
+        {
+            var topEle = document.getElementById("top");
+            //change inner stml of this element
+
+            var newel = document.createElement("div");
+            newel.innerHTML = "This is footer";
+            topEle.appendChild(newel);
+            //var btn = event.target;
+            //btn.disabled = "true";
+            event.target.disabled = "true";
+        }
+
+        function duplicate()
+        {
+            var divEl = document.querySelector("div.firstdiv-bordered");
+            let copy = divEl.cloneNode(true);
+            document.querySelector("body").appendChild(copy);
+        }
+
+    </script>
+</body>
+</html>
