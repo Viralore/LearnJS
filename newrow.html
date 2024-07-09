@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add Row to Table on click</h2>
+    <table border="1">
+        <tr>
+            <th>SNo.</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td>Sumit</td>
+            <td>smi@hotmail.com</td>
+            <td>9461075316</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td>Amit</td>
+            <td>ami@gmail.com</td>
+            <td>9461012345</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td>Jyoti</td>
+            <td>jy@yahoo.com</td>
+            <td>9461098765</td>
+        </tr>
+    </table>
+    <br>
+    <button type="button" onclick="addRow()">Add Row</button>
+
+    <script>
+        function addRow()
+        {
+            let elem = document.getElementsByTagName("table");
+            let tbl = elem[0];
+            var row = document.createElement("tr");
+
+            for(let i=0;i<4;i++)
+            {
+                var td = document.createElement("td");
+                var textArea = document.createElement("textarea");
+                //var textArea = document.createElement("plaintext")
+                td.append(textArea);
+                row.append(td);
+            }
+            tbl.appendChild(row);
+        }
+
+    </script>
+</body>
+</html>
