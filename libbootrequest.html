@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Book Data</title>
+    <script>
+        async function postBook(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            const bookData = {
+                "bookTypeid": 1,
+                "title": document.getElementById('title').value,
+                "author": document.getElementById('author').value,
+                "publisher": document.getElementById('publisher').value,
+                "isid": parseInt(document.getElementById('isid').value, 10)
+            };
+
+            try {
+                const response = await fetch('http://localhost:8080/books', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bookData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                const result = await response.json();
+                console.log('Success:', result);
+                alert('Book posted successfully!');
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was a problem with the fetch operation: ' + error.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Post Book Data</h1>
+    <form id="bookForm" onsubmit="postBook(event)">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <div>
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher" required>
+        </div>
+        <div>
+            <label for="isid">ISID:</label>
+            <input type="number" id="isid" name="isid" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
